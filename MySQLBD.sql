@@ -61,7 +61,7 @@ CREATE TABLE professor (
 
 
 CREATE TABLE ria_professor (
-	id_ptd_professor INT AUTO_INCREMENT PRIMARY KEY,
+	id_ria_professor INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_ria INT NOT NULL,
     id_professor INT NOT NULL,
     FOREIGN KEY (id_ria) REFERENCES ria (id_ria),
@@ -70,7 +70,7 @@ CREATE TABLE ria_professor (
 
 
 CREATE TABLE ptd_professor (
-	id_ptd_professor INT AUTO_INCREMENT PRIMARY KEY,
+	id_ptd_professor INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_professor INT NOT NULL,
     id_ptd INT NOT NULL,
     FOREIGN KEY (id_ptd) REFERENCES ptd (id_ptd),
