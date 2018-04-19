@@ -11,6 +11,7 @@ servForm.addons[0].addEventListener('click', ev =>{
 function callAjax(){
     var xhr = new XMLHttpRequest()
     xhr.open('GET', 'camboriu.php')
+    
     xhr.addEventListener('load', ev =>{
         results.innerText += xhr.responseText;
     })

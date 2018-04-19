@@ -40,7 +40,6 @@
                     inner join `professor_campus` as pc 
                         on pc.id_professor = p.id_professor
                         where id_campus = 0
-
                 ");
                 // Defines count as a variable who'll set the collapses's id (can't find a smarter solution, please help me)
                 $count = 0;
