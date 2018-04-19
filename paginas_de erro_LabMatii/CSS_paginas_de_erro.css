@@ -1,0 +1,16 @@
+body {
+	height: 100vh;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;	
+}
+
+body h1 {
+	font-size: 15vmin;	
+}
+
+body h2 {
+	font-size: 4vmin;	
+}
