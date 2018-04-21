@@ -15,12 +15,12 @@ body{
 }
 
 .container{
-    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 select{
     width: 80vw;
     height: 6vh;
@@ -36,10 +36,6 @@ select{
     border-bottom: 1vmin solid #379746;
 }	
     
-div.bottom{
-    flex-grow: 2;
-    margin-top: 15vh;
-}
 
 div.container > form {
     width: 80vw;
@@ -52,7 +48,7 @@ input.form-control {
 form > *{
     flex-grow: 1;
     display: flex;
-    margin-top: 1vh;	
+    margin-top: 4vw;	
 }
 
 form {
@@ -72,36 +68,15 @@ input.botao{
     margin-top: 7vh;
 }
 
-div.bottom hr {
-    width: 80vw;
-    margin-bottom: 5vh;
-}
-
-div.bottom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 span {
     font-family: Roboto;
     font-size: 3vmax;
 }
 
-.input-control {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-.fa-list-ul, .fa-envelope, .fa-briefcase {
-    font-size: 3vh;
-}
-
-span.input-group-addon{
-    background-color: #379746;
+span.input-group-addon {
+    background:  #379746;
     color: white;
+    font-size: 5vw;
 }
 
 div.results {
@@ -118,20 +93,6 @@ div.results > div.professor {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-div.buttondiv {
-    height: 10vh;
-    background-color: #379746;
-    width: 60vw;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    margin-top: 6vh;
-    border-radius: 2px;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
 }
 
 h1 {
@@ -151,4 +112,39 @@ a.collapselink:checked, a.collapselink:focus {
 
 div.panel-body {
     background-color:#f5f5f5;
+}
+
+div.searchProfessor{
+    margin-top: 5vw;
+}
+
+div.searchProfessor input {
+    width: 80vw;
+    margin-bottom: 5vw;
+}
+
+select.form-control {
+    width: 80vw;
+}
+
+.input-group {
+    width: 80vw;
+}
+
+input{
+    margin-bottom: 5vw;
+}
+
+input.form-control {
+    height: 10vw;
+}
+
+div.searchProfessor button {
+    background: #379746;
+    color: white;
+    font-family: Roboto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vw;
 }

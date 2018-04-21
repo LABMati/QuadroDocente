@@ -5,20 +5,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
 	<title>indexIFC</title>
-	<script src="js/sketch.js"></script>
 
 </head>
 
 <body>
 
-	<div class = "container">
-		<div class = "logo">
+	<div class="container">
+		<div class="logo">
 				<img src="img/ifc2.png"/>
 		</div>
-		<div class = "selectCampus">
-			<select name='camp' class="campusSelect" required="required">
+		<div class="selectCampus">
+			<select name='camp' class="campusSelect form-control" required="required">
 				<p class="help-block text-danger"></p>
 				<option value="0">Todos os Campi</option>
 				<option value="1">Abelardo Luz</option>
@@ -38,27 +40,17 @@
 				<option value="15">Rio do Sul</option>
 			</select>
 		</div>
-		<div name='prof'class="searchProfessor">
-			<input type="text" value="" size="50">
-			<button>Pesquisar</button>
-			<div class="search-dropdown"></div>
-		</div>
-	
-		<div class = "container">
+		<div class="searchProfessor">
 
-		</div>
-			
+  			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><i class="fas fa-list-ul"></i></span>
+				<input type="text" class="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="Nome">
+			</div>
 
-		<div class="bottom">
-			<hr>
-			<span>
-				Dúvidas, sugestões ou críticas? 
-			</span>
-			<span>
-				Contate o LABMat(i)
-			</span>
+			<div class="search-dropdown">
+				
+			</div>
 		</div>
-		
 	</div>
 	<script src="js/main.js"></script>
 </body>

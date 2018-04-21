@@ -1,5 +1,4 @@
 <?php
-header();
 
 //connect to db
 $connect = mysqli_connect("mysql.hostinger.com.br", "u535468846_lab", "labmatii", 'u535468846_quad');
@@ -17,12 +16,11 @@ if($campus!="Todos os Campi"){
         INNER JOIN campus AS c
             ON pc.id_campus = c.id_campus 
         AND c.cidade_campus = '$campus'
-        AND p.nome_professor LIKE '%$professor%     
-    ");
+        AND p.nome_professor LIKE '%$professor%'");
 }else{
     $query = mysqli_query($connect,
         "SELECT p.nome_professor FROM professor AS p
-        WHERE p.nome_professor LIKE '%$professor%     
+        WHERE p.nome_professor LIKE '%$professor%'     
     ");
 }
 //create an array for all the query results

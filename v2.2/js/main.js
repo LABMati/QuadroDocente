@@ -11,7 +11,7 @@ function showResult(professor, campus){ //Professor name queried and selected ca
     }
 
     var xhr = new XMLHttpRequest()
-    xhr.open('GET', 'http://127.0.0.1:8080/search.php?c='+campus+'&p='+professor, true) // p = professor, c = campus
+    xhr.open('GET', 'search.php?c='+campus+'&p='+professor, true) // p = professor, c = campus
     xhr.addEventListener('load', ev=>{
         let responses = JSON.parse(xhr.responseText)
         console.log(responses)
@@ -26,7 +26,7 @@ function createProfessorList(professor, campus){
         return
     }
 
-    xhr.open('GET',"http://127.0.0.1:8080/professores.php?c="+campus+'&p='+professor, true)
+    xhr.open('GET',"professores.php?c="+campus+'&p='+professor, true)
     chr.addEventListener('load', ev => {
         let responses = JSON.parse(xhr.responseText)
         if(responses == "Sem sugestões"){
