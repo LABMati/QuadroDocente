@@ -13,7 +13,7 @@ INSERT INTO professor(nome_professor, email_professor,lattes_professor) VALUES
 
 ('Agata Regiane Quissini',
 'agata.quissini@ifc.edu.br',
-null),
+'http://lattes.cnpq.br/7010480535904039'),
 
 ('Aldalúcia Tereza da Rosa',
 'aldalucia.rosa@ifc.edu.br',
@@ -81,7 +81,7 @@ null),
 
 ('Araceli Gonçalves',
 'araceli.goncalves@ifc.edu.br',
-null),
+'http://lattes.cnpq.br/7792887070174854'),,
 
 ('Aujor Tadeu Cavalcante Andrade',
 'aujor.andrade@ifc.edu.br',
