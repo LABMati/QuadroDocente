@@ -1,23 +1,32 @@
-var searchProfessor = document.querySelector("div.searchProfessor input") //search input box
-var resultDropdown = document.querySelector("div.searchProfessor div.search-dropdown") //container to show results
-var campusSelect = document.querySelector('div.selectCampus select')//campus selector box
+/*
+    Important variables
+*/
+
+var searchProfessor = document.querySelector("div.searchProfessor input")//Search input box
+var resultDropdown = document.querySelector("div.searchProfessor div.search-dropdown")//Space for professor boxes
+var campusSelect = document.querySelector('div.selectCampus select')//Campus select box
 var campusInfo  = document.querySelector('div.campus-info')
 var campusTitle = campusInfo.querySelector('div.panel-heading')
 var campusPhone = campusInfo.querySelector('div.panel-body')
 var campusEnd = campusInfo.querySelector('a')
-var searchButton = document.querySelector("div.searchProfessor button")
 var x = document.querySelector('div.input-group')
 x.style.marginBottom = '5vw'
 
-//Call AJAX function to live search suggestions
-function showResult(professor, campus){ //Professor name queried and selected campus name
-    
-    //stop function if there's no input
+/*
+    showResult()
+    Receive two strings parameters, professor and campus, both are inserted by the user on input/select
+    In case of professor parameter is empty, returns the function
+    Then opens a XMLHttpRequest, using GET method and passing professor and campus on the URL
+    When the request is loaded, receives and parsesa JSON into responses variable
+    In case responses is "Sem sugestões", run buildFailedPanel()
+    In other cases, run buildBox() with responses as parameter
+*/
+
+function showResult(professor, campus){
     if(professor.trim().length==0){
         return
     }
 
-    //request the query from the server
     var xhr = new XMLHttpRequest()
     xhr.open('GET', 'http://labmatii.online/QuadroDocente/v2.2/search.php?c='+campus+'&p='+professor, true) // p = professor, c = campus
     xhr.addEventListener('load', ev=>{
@@ -32,7 +41,6 @@ function showResult(professor, campus){ //Professor name queried and selected ca
     xhr.send()
 }
 
-//add event to campus select to get user input
 campusSelect.addEventListener('input', ev=>{
     if (campusSelect.options.selectedIndex == 0) {
         campusInfo.style.display = 'none'
@@ -44,34 +52,51 @@ campusSelect.addEventListener('input', ev=>{
 
 getCampusInfo();
 
-//get campus informations from servers and create box with them
+/* 
+getCampusInfo()
+Receives a String naming the selected campus for search
+Starts a XMLHttpRequest to labmat(i)²'s server, on GET method
+Sends the request and waits for a return
+If status is 200, changes the campus info based on info received from the database
+*/
+
 function getCampusInfo(campusid) {
     xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://labmatii.online/QuadroDocente/v2.2/campusInfo.php?campusInfo='+campusid)
     xhr.addEventListener('load', ev=>{
-        var response = JSON.parse(xhr.response)
-        campusTitle.innerText = "Campus " + response[0][0]
-        campusPhone.innerText = "Telefone: " + response[0][1]
-        campusEnd.href = response[0][2]
+        if(xhr.status == 200){       
+            var response = JSON.parse(xhr.response)
+            campusTitle.innerText = "Campus " + response[0][0]
+            campusPhone.innerText = "Telefone: " + response[0][1]
+            campusEnd.href = response[0][2]
+        }else{
+            console.log("Error: "+xhr.status)
+        }
     })
     xhr.send()
 }
 
-//Timer between user inputs
+//Starts variable that will be used as timer for user inputs
 var searchTimeout
 
-//add event to input box to hear user inputs and call function to get server info
+/* 
+    For performance optmization, searchs will only start after a certain amount of time
+    When the input event is triggered, the code will check for a timer
+    If it's already defined, the timer will be cleared and redefined
+    At the time when the timer expires without redefing, showResult() is called
+*/
 searchProfessor.addEventListener('input', ev=>{
     if (searchTimeout != undefined) clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(callServerScript, 500); //wait 0.5s after user input to get server info
+    searchTimeout = setTimeout
+        (showResult(searchProfessor.value, campusSelect.options[campusSelect.selectedIndex].innerText), 500);
 
 })
 
-function callServerScript() {
-    showResult(searchProfessor.value, campusSelect.options[campusSelect.selectedIndex].innerText)
-}
 
-//create a "Non suggestion" box
+/*
+    In case of search have no return, this function will build a fail box
+*/
+
 function buildFailedPanel(){
     removeDivs()
     let div = document.createElement('DIV')
@@ -80,7 +105,13 @@ function buildFailedPanel(){
     resultDropdown.appendChild(div)
 }
 
-//create professors boxes
+/*
+    buildBox()
+    Receives a JSON Object generated by search.php
+    Call removeDivs() to clean searchDropdown
+    Then it uses a lot of spaghetti code and DOM manipulation to build a beautiful collapse panel with teachers data
+*/
+
 function buildBox(obj){
     removeDivs()
     for (var i = 0; i < obj.length; i++) {
@@ -142,7 +173,10 @@ function buildBox(obj){
     }
 }
 
-//Remove all created divs
+/* 
+    Remove all divs from searchDropdown 
+*/
+
 function removeDivs() {
     let count = resultDropdown.children.length;
     for (var i = 0; i < count; i++) {
@@ -150,4 +184,4 @@ function removeDivs() {
     }
 }
 
-searchProfessor.value = ""
+searchProfessor.value = "" //Empty input box on every start page
