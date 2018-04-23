@@ -1,21 +1,23 @@
-var searchProfessor = document.querySelector("div.searchProfessor input")
-var resultDropdown = document.querySelector("div.searchProfessor div.search-dropdown")
-var campusSelect = document.querySelector('div.selectCampus select')
+var searchProfessor = document.querySelector("div.searchProfessor input") //search input box
+var resultDropdown = document.querySelector("div.searchProfessor div.search-dropdown") //container to show results
+var campusSelect = document.querySelector('div.selectCampus select')//campus selector box
 var campusInfo  = document.querySelector('div.campus-info')
 var campusTitle = campusInfo.querySelector('div.panel-heading')
 var campusPhone = campusInfo.querySelector('div.panel-body')
 var campusEnd = campusInfo.querySelector('a')
 var searchButton = document.querySelector("div.searchProfessor button")
-var resultContainer = document.querySelector('div.container>div.container')
 var x = document.querySelector('div.input-group')
 x.style.marginBottom = '5vw'
 
 //Call AJAX function to live search suggestions
 function showResult(professor, campus){ //Professor name queried and selected campus name
+    
+    //stop function if there's no input
     if(professor.trim().length==0){
         return
     }
 
+    //request the query from the server
     var xhr = new XMLHttpRequest()
     xhr.open('GET', 'http://labmatii.online/QuadroDocente/v2.2/search.php?c='+campus+'&p='+professor, true) // p = professor, c = campus
     xhr.addEventListener('load', ev=>{
@@ -30,25 +32,7 @@ function showResult(professor, campus){ //Professor name queried and selected ca
     xhr.send()
 }
 
-//Create professor list pressing the button "Pesquisar"
-function createProfessorList(professor, campus){
-    if(professor.trim().length==0 || professor==null){
-        return
-    }
-
-    xhr.open('GET',"http://labmatii.online/QuadroDocente/v2.2/professores.php?c="+campus+'&p='+professor, true)
-    chr.addEventListener('load', ev => {
-        let responses = JSON.parse(xhr.responseText)
-        if(responses == "Sem sugestões"){
-            let p = document.createElement("P")
-            p.innerText = "Nenhum resultado encontrado"
-            resultContainer.appendChild(p)
-        }else{
-            buildBox(responses)
-        }
-    })
-}
-
+//add event to campus select to get user input
 campusSelect.addEventListener('input', ev=>{
     if (campusSelect.options.selectedIndex == 0) {
         campusInfo.style.display = 'none'
@@ -60,6 +44,7 @@ campusSelect.addEventListener('input', ev=>{
 
 getCampusInfo();
 
+//get campus informations from servers and create box with them
 function getCampusInfo(campusid) {
     xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://labmatii.online/QuadroDocente/v2.2/campusInfo.php?campusInfo='+campusid)
@@ -75,9 +60,10 @@ function getCampusInfo(campusid) {
 //Timer between user inputs
 var searchTimeout
 
+//add event to input box to hear user inputs and call function to get server info
 searchProfessor.addEventListener('input', ev=>{
     if (searchTimeout != undefined) clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(callServerScript, 500);
+    searchTimeout = setTimeout(callServerScript, 500); //wait 0.5s after user input to get server info
 
 })
 
@@ -85,6 +71,7 @@ function callServerScript() {
     showResult(searchProfessor.value, campusSelect.options[campusSelect.selectedIndex].innerText)
 }
 
+//create a "Non suggestion" box
 function buildFailedPanel(){
     removeDivs()
     let div = document.createElement('DIV')
@@ -93,6 +80,7 @@ function buildFailedPanel(){
     resultDropdown.appendChild(div)
 }
 
+//create professors boxes
 function buildBox(obj){
     removeDivs()
     for (var i = 0; i < obj.length; i++) {
@@ -154,6 +142,7 @@ function buildBox(obj){
     }
 }
 
+//Remove all created divs
 function removeDivs() {
     let count = resultDropdown.children.length;
     for (var i = 0; i < count; i++) {
