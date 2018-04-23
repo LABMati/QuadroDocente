@@ -7,8 +7,9 @@ $connect = mysqli_connect("mysql.hostinger.com.br", "u535468846_lab", "labmatii"
 $professor = $_GET["p"];
 $campus = $_GET["c"];
 
-//query for the related names 
-if($campus!="Todos os Campi"){
+//query for the related names
+//get the professors with the user search and the chosen campus
+if($campus!="Todos os Campi"){ //if there is some selected campus
     $query = mysqli_query($connect,
         "SELECT p.nome_professor FROM professor AS p
         INNER JOIN professor_campus AS pc
@@ -17,7 +18,7 @@ if($campus!="Todos os Campi"){
             ON pc.id_campus = c.id_campus 
         AND c.cidade_campus = '$campus'
         AND p.nome_professor LIKE '%$professor%'");
-}else{
+}else{ //if is "All Campus" selected
     $query = mysqli_query($connect,
         "SELECT p.nome_professor FROM professor AS p
         WHERE p.nome_professor LIKE '%$professor%'     
@@ -31,9 +32,10 @@ while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
     $nome = $row['nome_professor'];
     array_push($responses, $nome);
 }
-
+//Add "No suggestion" if there's no query results
 if($responses==NULL){
     $responses = ["Sem sugestões"];
 }
 
-print_r(json_encode($responses));
+//Send the results as a JSON array
+echo json_encode($responses);
