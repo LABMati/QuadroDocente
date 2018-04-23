@@ -20,7 +20,6 @@ function showResult(professor, campus){ //Professor name queried and selected ca
     xhr.open('GET', 'http://labmatii.online/QuadroDocente/v2.2/search.php?c='+campus+'&p='+professor, true) // p = professor, c = campus
     xhr.addEventListener('load', ev=>{
         let responses = JSON.parse(xhr.responseText)
-        console.log(responses)
         if (responses == "Sem sugestões") {
             buildFailedPanel()
         }else{
@@ -66,7 +65,6 @@ function getCampusInfo(campusid) {
     xhr.open('GET', 'http://labmatii.online/QuadroDocente/v2.2/campusInfo.php?campusInfo='+campusid)
     xhr.addEventListener('load', ev=>{
         var response = JSON.parse(xhr.response)
-        console.log(response)
         campusTitle.innerText = "Campus " + response[0][0]
         campusPhone.innerText = "Telefone: " + response[0][1]
         campusEnd.href = response[0][2]
@@ -100,7 +98,7 @@ function buildBox(obj){
     for (var i = 0; i < obj.length; i++) {
         var divs = []
 
-        for (var j = 0; j < 6; j++) {
+        for (var j = 0; j < 7; j++) {
             divs[j] = document.createElement('DIV')
         }
 
@@ -120,20 +118,33 @@ function buildBox(obj){
         divs[4].classList = 'panel-body'
         divs[4].innerText = obj[i][1]
 
-        divs[5].classList = 'panel-footer'
-        divs[5].innerText = 'Curriculo Lattes'
-        
+        divs[5].classList = 'panel-body'
+
+        divs[6].innerText = 'Horário'
+        divs[6].classList = 'panel-body'
+
         var as = []
         as[0] = document.createElement('A')
         as[1] = document.createElement('A')
         as[0].dataset['toggle'] = 'collapse'
         as[0].href = '#collapse'+i
-        as[1].href = obj[i][2]
-        as[1].target = '_blank'
+        as[2] = document.createElement('A')
+        as[2].href = obj[i][3]
+        as[2].target = '_blank'
+        if (obj[i][2] == 'Null') {
+            divs[5].innerText = 'Curriculo Lattes: Não informado'
+        } else {
+            divs[5].innerText = 'Curriculo Lattes'
+            as[1].href = obj[i][2]
+            as[1].target = '_blank'
 
-        as[1].appendChild(divs[5]);
+        }
+
+        as[1].appendChild(divs[5])
         as[0].appendChild(divs[2])
+        as[2].appendChild(divs[6])
         divs[3].appendChild(as[1])
+        divs[3].appendChild(as[2])
         divs[3].appendChild(divs[4])
         divs[1].appendChild(as[0])
         divs[1].appendChild(divs[3])
