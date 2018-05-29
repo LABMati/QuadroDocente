@@ -1,12 +1,9 @@
 <?php
-
 //connect to db
 $connect = mysqli_connect("mysql.hostinger.com.br", "u535468846_lab", "labmatii", 'u535468846_quad');
-
 //use the send GET parameters
 $professor = $_GET["p"];
 $campus = $_GET["c"];
-
 //query for the related names 
 if($campus!="Todos os Campi"){
     $query = mysqli_query($connect,
@@ -47,9 +44,7 @@ while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
     array_push($responses, $professor);
     $professor =[];
 }
-
 if($responses==NULL){
     $responses = ["Sem sugestões"];
 }
-
 print_r(json_encode($responses));
