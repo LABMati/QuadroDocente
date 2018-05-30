@@ -9,6 +9,7 @@ var campusInfo  = document.querySelector('div.campus-info')
 var campusTitle = campusInfo.querySelector('div.panel-heading')
 var campusPhone = campusInfo.querySelector('div.panel-body')
 var campusEnd = campusInfo.querySelector('a')
+var listAllBut = document.querySelector('span#basic-addon1')
 var x = document.querySelector('div.input-group')
 x.style.marginBottom = '5vw'
 
@@ -28,7 +29,7 @@ function showResult(professor, campus){
     }
 
     var xhr = new XMLHttpRequest()
-    xhr.open('GET', 'http://labmatii.online/QuadroDocente/v2.2/search.php?c='+campus+'&p='+professor, true) // p = professor, c = campus
+    xhr.open('GET', 'http://labmatii.online/QuadroDocente/search.php?c='+campus+'&p='+professor, true) // p = professor, c = campus
     xhr.addEventListener('load', ev=>{
         let responses = JSON.parse(xhr.responseText)
         if (responses == "Sem sugestões") {
@@ -40,6 +41,34 @@ function showResult(professor, campus){
     })
     xhr.send()
 }
+
+/*
+	Get all the professors from the selected campus and create an entire list with all the registered
+	Stop function if theres no campus selected
+*/
+
+function listAllProfessors(campus){
+    if(campus == "Todos os Campi"){
+        alert("Selecione um Campus")
+        return
+    }else{
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', 'http://labmatii.online/QuadroDocente/listAll.php?c='+campus, true) // c = campus
+        xhr.addEventListener('load', ev=>{
+            let responses = JSON.parse(xhr.responseText)
+            if (responses == "Sem sugestões") {
+                buildFailedPanel()
+            }else{
+                buildBox(responses)
+            }
+            
+        })
+        xhr.send()
+    }
+}
+listAllBut.addEventListener('click', ev=>{
+    listAllProfessors(campusSelect.options.selectedIndex)
+})
 
 campusSelect.addEventListener('input', ev=>{
     if (campusSelect.options.selectedIndex == 0) {
@@ -62,7 +91,7 @@ If status is 200, changes the campus info based on info received from the databa
 
 function getCampusInfo(campusid) {
     xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://labmatii.online/QuadroDocente/v2.2/campusInfo.php?campusInfo='+campusid)
+    xhr.open('GET', 'http://labmatii.online/QuadroDocente/campusInfo.php?campusInfo='+campusid)
     xhr.addEventListener('load', ev=>{
         if(xhr.status == 200){       
             var response = JSON.parse(xhr.response)
