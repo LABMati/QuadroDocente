@@ -9,9 +9,18 @@ if(!isset($_GET["p"]) || !isset($_GET["p"])){
     die;
 }
 
-$dbh = new PDO("mysql:host=mysql.hostinger.com.br;dbname=u535468846_quad", "u535468846_lab", "labmatii", [
-    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-]);
+$dsn = 'mysql:dbname=u535468846_quad;host=mysql.hostinger.com.br';
+$user = 'u535468846_lab';
+$password = 'labmatii';
+
+try {
+    $dbh = new PDO($dsn, $user, $password);
+} catch (PDOException $e) {
+    echo 'Connection failed: ' . $e->getMessage();
+}
+
+print_r($dbh);
+die;
 
 if($campus != "Todos os Campi") {
     $sth = $dbh->prepare
