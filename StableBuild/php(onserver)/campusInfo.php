@@ -1,25 +1,23 @@
 <?php
-    $campus = $_GET['campusInfo'];
     //connect to db
+    $dbh = include("pdo.php");
+
+    //get campus parameter
+    $campus = $_GET['campusInfo'];
+
+    //query for the campus info
+    $sth = $dbh->prepare(
+        "SELECT cidade_campus, telefone_campus, site_campus FROM campus WHERE id_campus = ?"
+    );
+    $params = array($campus);
+    $test = $sth->execute($params);
     
-    $connect = mysqli_connect("mysql.hostinger.com.br", "u535468846_lab", "labmatii", 'u535468846_quad');
-
-    $query = mysqli_query($connect, "SELECT cidade_campus, telefone_campus, site_campus FROM campus where id_campus=".$campus);
-
-    if (!$query) {
-       echo "Erro";
-    }else{
-        $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
-        $campus = [];
-        $responses = [];
-        $cidade = $row['cidade_campus'];
-        $telefone = $row['telefone_campus'];
-        $site = $row['site_campus'];
-        array_push($campus, $cidade);
-        array_push($campus, $telefone);
-        array_push($campus, $site);
-        array_push($responses, $campus);
-        print_r(json_encode($responses));
+    //test if error in query
+    if(!$test){
+        echo "alert('Ocorreu um erro durante a execução, contate o laboratório pelo email labmatiii@gmail.com')";
+        die;
     }
 
-?>
+    //add all query results to an array and return it
+    $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($results);
