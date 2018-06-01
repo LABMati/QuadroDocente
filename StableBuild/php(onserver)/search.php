@@ -1,6 +1,7 @@
 <?php
 
 $professor = $_GET["p"];
+$professor = "%$professor%";
 $campus = $_GET["c"];
 
 if(!isset($_GET["p"]) || !isset($_GET["p"])){
@@ -8,7 +9,9 @@ if(!isset($_GET["p"]) || !isset($_GET["p"])){
     die;
 }
 
-$dbh = include('pdo.php');
+$dbh = new PDO("mysql:host=mysql.hostinger.com.br;dbname=u535468846_quad", "u535468846_lab", "labmatii", [
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+]);
 
 if($campus != "Todos os Campi") {
     $sth = $dbh->prepare
@@ -22,29 +25,26 @@ if($campus != "Todos os Campi") {
                                 ON p.id_professor = pc.id_professor
                                     INNER JOIN campus AS c
                                         ON pc.id_campus = c.id_campus
-                                            WHERE c.cidade_campus = ?
-                                                AND pr.nome_professor LIKE ' ? ' ");
+                                            WHERE c.cidade_campus = :camp
+                                                AND pr.nome_professor LIKE"." '%$professor%' ");
 
-    $params = array($campus, "%$professor%");
-    $sth->execute($params);
+    $sth->execute(["camp" => $campus]);
+
+
+
+
+
+
 }else{
     $sth = $dbh->prepare
-    ("SELECT p.nome_professor, p.email_professor, p.lattes_professor, h.link_horario
-        FROM professor AS p
-            INNER JOIN horario_professor AS hp
-                ON p.id_professor = hp.id_professor
-                    INNER JOIN horario AS h
-                        ON hp.id_horario = h.id_horario
-                            WHERE p.nome_professor LIKE '%:p%'");    
-    $sth->execute([
-        "p" => $professor
-    ]);
+    ("SELECT p.nome_professor, p.email_professor, p.lattes_professor from professor where 1");
+    // $sth->bindParam(1 , $professor);
+    $sth->execute();
 }
 
-$responses = $sth->fetchAll(PDO::FETCH_ASSOC);
+$responses = $sth->fetch(PDO::FETCH_ASSOC);
 
-
-if($responses==NULL){
+if(empty($responses)){
     $responses = ["Sem sugestões"];
 }
 
