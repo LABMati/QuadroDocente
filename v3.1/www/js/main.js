@@ -2,20 +2,40 @@
     Important variables
 */
 
-var searchProfessor = document.querySelector("div.searchProfessor input")//Search input box
-var resultDropdown = document.querySelector("div.searchProfessor div.search-dropdown")//Space for professor boxes
-var campusSelect = document.querySelector('div.selectCampus select')//Campus select box
-var campusInfo  = document.querySelector('div.campus-info')
-var campusTitle = campusInfo.querySelector('div.panel-heading')
-var campusPhone = campusInfo.querySelector('div.panel-body')
-var campusEnd = campusInfo.querySelector('a')
-var listAllBut = document.querySelector('span#basic-addon1')
-var x = document.querySelector('div.input-group')
+let searchProfessor = document.querySelector("div.searchProfessor input")//Search input box
+let resultDropdown = document.querySelector("div.searchProfessor div.search-dropdown")//Space for professor boxes
+let campusSelect = document.querySelector('div.selectCampus select')//Campus select box
+let campusInfo  = document.querySelector('div.campus-info')
+let campusTitle = campusInfo.querySelector('div.panel-heading')
+let campusPhone = campusInfo.querySelector('div.panel-body')
+let campusSite = campusInfo.querySelector('a.site')
+let campusEnd = campusInfo.querySelector('a.endereco')
+let listAllBut = document.querySelector('span#basic-addon1')
+let emailSend 
+let x = document.querySelector('div.input-group')
 x.style.marginBottom = '5vw'
+
+
+function onDeviceReady(){
+    alert("rodou")
+    emailSend = (remetente) => {
+        if(cordova.plugins.email.isAvailable){
+            alert("Era pra funcionar")
+            cordova.plugins.email.open({
+                to:      remetente,
+                cc:      '',
+                bcc:     ['', ''],
+                subject: 'Contato - Seu nome',
+                body:    ''
+            });
+        }else{
+            alert("Seu dispotivo não suporta")
+        }
+    }    
+}
 
 /*
     showResult()
-    Receive two strings parameters, professor and campus, both are inserted by the user on input/select
     In case of professor parameter is empty, returns the function
     Then opens a XMLHttpRequest, using GET method and passing professor and campus on the URL
     When the request is loaded, receives and parsesa JSON into responses variable
@@ -23,7 +43,10 @@ x.style.marginBottom = '5vw'
     In other cases, run buildBox() with responses as parameter
 */
 
-function showResult(professor, campus){
+function showResult(){
+    professor = searchProfessor.value
+    campus = campusSelect.options[campusSelect.selectedIndex].innerText
+
     if(professor.trim().length==0){
         return
     }
@@ -97,13 +120,17 @@ function getCampusInfo(campusid) {
             var response = JSON.parse(xhr.response)
             campusTitle.innerText = "Campus " + response[0][0]
             campusPhone.innerText = "Telefone: " + response[0][1]
-            campusEnd.href = response[0][2]
+            campusSite.href = response[0][2]
+            campusEnd.href = response[0][4]
+            campusEnd.firstElementChild.innerText = response[0][3]
         }else{
             console.log("Error: "+xhr.status)
         }
     })
     xhr.send()
 }
+
+document.addEventListener("deviceready", onDeviceReady)
 
 //Starts variable that will be used as timer for user inputs
 var searchTimeout
@@ -116,9 +143,7 @@ var searchTimeout
 */
 searchProfessor.addEventListener('input', ev=>{
     if (searchTimeout != undefined) clearTimeout(searchTimeout);
-    searchTimeout = setTimeout
-        (showResult(searchProfessor.value, campusSelect.options[campusSelect.selectedIndex].innerText), 500);
-
+    searchTimeout = setTimeout(showResult, 500);
 })
 
 
@@ -165,6 +190,9 @@ function buildBox(obj){
 
         divs[4].classList = 'panel-body'
         divs[4].innerText = obj[i][1]
+        divs[4].addEventListener("click", ev=>{
+            emailSend(divs[4].innerText)
+        })
 
         divs[5].classList = 'panel-body'
 

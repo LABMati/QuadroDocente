@@ -252,3 +252,23 @@ div.return {
     color: black;
     font-size: 8vw;
 }
+
+a{
+    color: inherit !important;
+    /* Bootstrap override*/
+}
+
+div.campus-info div.panel-footer {
+    background: white;
+    color: black;
+}
+
+
+.panel {
+    margin-bottom: 0 !important;
+    /* Bootstrap override*/
+}
+
+a:focus {
+    text-decoration: none !important;
+}

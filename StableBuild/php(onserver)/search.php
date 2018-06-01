@@ -1,50 +1,51 @@
 <?php
-//connect to db
-$connect = mysqli_connect("mysql.hostinger.com.br", "u535468846_lab", "labmatii", 'u535468846_quad');
-//use the send GET parameters
+
 $professor = $_GET["p"];
 $campus = $_GET["c"];
-//query for the related names 
-if($campus!="Todos os Campi"){
-    $query = mysqli_query($connect,
-        "SELECT p.nome_professor, p.email_professor, p.lattes_professor, h.link_horario FROM professor AS p
-        INNER JOIN horario_professor as hp
-            ON p.id_professor = hp.id_professor
-        INNER JOIN horario as h
-            ON hp.id_horario = h.id_horario
-        INNER JOIN professor_campus AS pc
-            ON p.id_professor = pc.id_professor
-        INNER JOIN campus AS c
-            ON pc.id_campus = c.id_campus 
-        AND c.cidade_campus = '$campus'
-        AND p.nome_professor LIKE '%$professor%'");
+
+if(!isset($_GET["p"]) || !isset($_GET["p"])){
+    echo "alert('Ocorreu um erro durante a execução, contate o laboratório pelo email labmatiii@gmail.com')";
+    die;
+}
+
+$dbh = include('pdo.php');
+
+if($campus != "Todos os Campi") {
+    $sth = $dbh->prepare
+    ("SELECT pr.nome_professor, pr.email_professor, pr.lattes_professor, h.link_horario
+        FROM professor AS pr
+            INNER JOIN horario_professor AS hp
+                ON pr.id_professor = hp.id_professor
+                    INNER JOIN horario AS h
+                        ON hp.id_horario = h.id_horario
+                            INNER JOIN professor_campus AS pc
+                                ON p.id_professor = pc.id_professor
+                                    INNER JOIN campus AS c
+                                        ON pc.id_campus = c.id_campus
+                                            WHERE c.cidade_campus = ?
+                                                AND pr.nome_professor LIKE ' ? ' ");
+
+    $params = array($campus, "%$professor%");
+    $sth->execute($params);
 }else{
-    $query = mysqli_query($connect,
-        "SELECT p.nome_professor, p.email_professor, p.lattes_professor, h.link_horario FROM professor AS p
-        INNER JOIN horario_professor as hp
-            ON p.id_professor = hp.id_professor
-        INNER JOIN horario as h
-            ON hp.id_horario = h.id_horario
-        WHERE p.nome_professor LIKE '%$professor%'     
-    ");
+    $sth = $dbh->prepare
+    ("SELECT p.nome_professor, p.email_professor, p.lattes_professor, h.link_horario
+        FROM professor AS p
+            INNER JOIN horario_professor AS hp
+                ON p.id_professor = hp.id_professor
+                    INNER JOIN horario AS h
+                        ON hp.id_horario = h.id_horario
+                            WHERE p.nome_professor LIKE '%:p%'");    
+    $sth->execute([
+        "p" => $professor
+    ]);
 }
-//create an array for all the query results
-$responses =[];
-$professor =[];
-//add to array all the query results find
-while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
-    $email = $row['email_professor'];
-    $lattes = $row['lattes_professor'];
-    $nome = $row['nome_professor'];
-    $horario = $row['link_horario'];
-    array_push($professor, $nome);
-    array_push($professor, $email);
-    array_push($professor, $lattes);
-    array_push($professor, $horario);
-    array_push($responses, $professor);
-    $professor =[];
-}
+
+$responses = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+
 if($responses==NULL){
     $responses = ["Sem sugestões"];
 }
+
 print_r(json_encode($responses));

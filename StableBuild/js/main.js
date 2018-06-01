@@ -95,6 +95,7 @@ function getCampusInfo(campusid) {
     xhr.addEventListener('load', ev=>{
         if(xhr.status == 200){       
             var response = JSON.parse(xhr.response)
+            console.log(response)
             campusTitle.innerText = "Campus " + response[0][0]
             campusPhone.innerText = "Telefone: " + response[0][1]
             campusEnd.href = response[0][2]

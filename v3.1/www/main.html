@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    
+    <!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-	<link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+
+    <!-- Styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	 crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-	 crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-	 crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link href="css/menustyle.css" rel="stylesheet">
+    
+    <!-- Dependecies -->
+	<script src="js/jquery.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="cordova.js"></script>
 
 	<title>Quadro Docente - IFC</title>
 
@@ -55,15 +61,20 @@
 			</select>
 		</div>
 		<div class="campus-info panel">
-			<div class="panel-heading"></div>
-			<div class="panel-body"></div>
-			<a target="_blank"><div class="panel-footer">Site institucional</div></a>
+			<a data-toggle="collapse" href="#collapsec">
+				<div class="panel-heading"></div>
+			</a>
+			<div id="collapsec" class="panel-collapse collapse">
+				<div class="panel-body"></div>
+				<a target="_blank" class="site"><div class="panel-footer">Site institucional</div></a>
+				<a target="_blank" class="endereco"><div class="panel-footer"></div></a>
+			</div>
 		</div>
 		<div class="searchProfessor">
 
   			<div class="input-group">
 				<span class="input-group-addon" id="basic-addon1"><i class="fas fa-list-ul"></i></span>
-				<input type="text" class="form-control" placeholder="Professores..." aria-label="Nome" aria-describedby="Nome">
+				<input type="text" class="form-control" placeholder="Encontre seu professor..." aria-label="Nome" aria-describedby="Nome">
 			</div>
 
 			<div class="search-dropdown">

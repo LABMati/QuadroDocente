@@ -71,3 +71,27 @@ div.return {
     color: black;
     font-size: 8vw;
 }
+
+.fa-sort-down{
+    color: white;
+    font-size: 6vw;  
+    margin-top: -2vw;
+    transition: 0.5s;
+}
+
+.rotate{
+    transform: rotate(180deg);
+    margin-top: 2vw;
+}
+
+i.fa-sort-down{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
