@@ -1,45 +1,41 @@
 <?php
 
 //connect to db
-$connect = mysqli_connect("mysql.hostinger.com.br", "u535468846_lab", "labmatii", 'u535468846_quad');
+$dbh = include('pdo.php');
 
 //get GET parameter for campus
 $campus = $_GET["c"];
 
 //query for all the professors from the selected campus
-$query = mysqli_query($connect,
-"SELECT p.nome_professor, p.email_professor, p.lattes_professor, h.link_horario FROM professor AS p
-INNER JOIN horario_professor as hp
-    ON p.id_professor = hp.id_professor
-INNER JOIN horario as h
-    ON hp.id_horario = h.id_horario
-INNER JOIN professor_campus AS pc
-    ON p.id_professor = pc.id_professor
-INNER JOIN campus AS c
-    ON pc.id_campus = c.id_campus 
-AND c.id_campus = '$campus'");
+$sth = $dbh->prepare(
+    "SELECT pr.nome_professor, pr.email_professor, pr.lattes_professor, h.link_horario
+        FROM professor AS pr
+            INNER JOIN horario_professor AS hp
+                ON pr.id_professor = hp.id_professor
+                    INNER JOIN horario AS h
+                        ON hp.id_horario = h.id_horario
+                            INNER JOIN professor_campus AS pc
+                                ON p.id_professor = pc.id_professor
+                                    INNER JOIN campus AS c
+                                        ON pc.id_campus = c.id_campus
+                                            WHERE c.cidade_campus = ?"
+);
+$params = array($campus);
+$test = $sth->execute($params);
 
-//create an array for all the query results
-$responses =[];
-$professor =[];
 
-//add to array all the query results found
-while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)){
-    $email = $row['email_professor'];
-    $lattes = $row['lattes_professor'];
-    $nome = $row['nome_professor'];
-    $horario = $row['link_horario'];
-    array_push($professor, $nome);
-    array_push($professor, $email);
-    array_push($professor, $lattes);
-    array_push($professor, $horario);
-    array_push($responses, $professor);
-    $professor =[];
+if(!$test){
+    echo "alert('Ocorreu um erro durante a execução, contate o laboratório pelo email labmatiii@gmail.com')";
+    die;
 }
 
+//add to array all the query results found
+$responses = $sth->fetchAll(PDO::FETCH_ASSOC);
+
 //add "No suggestion" if there's no professor submited 
-if($responses==NULL){
+if(empty($responses)){
     $responses = ["Sem sugestões"];
 }
 
+//return query results
 echo json_encode($responses);
