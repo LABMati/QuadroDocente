@@ -1,20 +1,19 @@
 <?php
 
 $professor = $_GET["p"];
-$professor = "%$professor%";
 $campus = $_GET["c"];
 
-if(!isset($_GET["p"]) || !isset($_GET["p"])){
+if(!isset($_GET["c"]) || !isset($_GET["p"])){
     echo "alert('Ocorreu um erro durante a execução, contate o laboratório pelo email labmatiii@gmail.com')";
     die;
 }
 
-$dsn = 'mysql:dbname=u535468846_quad;host=mysql.hostinger.com.br';
+$dsn = 'mysql:host=mysql.hostinger.com.br;dbname=u535468846_quad;';
 $user = 'u535468846_lab';
 $password = 'labmatii';
 
 try {
-    $dbh = new PDO($dsn, $user, $password);
+    $dbh = new PDO($dsn, $user, $password,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();
 }
@@ -38,21 +37,15 @@ if($campus != "Todos os Campi") {
                                                 AND pr.nome_professor LIKE"." '%$professor%' ");
 
     $sth->execute(["camp" => $campus]);
-
-
-
-
-
-
 }else{
     $sth = $dbh->prepare
-    ("SELECT p.nome_professor, p.email_professor, p.lattes_professor from professor where 1");
+    ("SELECT nome_professor, email_professor, lattes_professor from professor");
     // $sth->bindParam(1 , $professor);
     $sth->execute();
 }
 
 $responses = $sth->fetch(PDO::FETCH_ASSOC);
-
+	
 if(empty($responses)){
     $responses = ["Sem sugestões"];
 }
