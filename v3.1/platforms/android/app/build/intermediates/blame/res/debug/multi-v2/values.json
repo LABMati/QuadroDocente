@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/E:\\Env\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\E:\\Env\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/E:\\Env\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\E:\\Env\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",
@@ -23,32 +23,10 @@
             ]
         },
         {
-            "outputFile": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/E:\\Env\\projects\\Quadro Docente - Git\\QuadroDocente\\QuadroDocenteApp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "F:\\media\\leviosar\\________1\\Env\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/E:\\Env\\projects\\Quadro Docente - Git\\QuadroDocente\\QuadroDocenteApp\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "165,55,106",
-                        "endColumns": "63,50,58",
-                        "endOffsets": "224,101,160"
-                    },
-                    "to": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,119,170",
-                        "endColumns": "63,50,58",
-                        "endOffsets": "114,165,224"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/media/leviosar/________1/Env/projects/QuadroDocente/v3.1/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
-            "map": [
-                {
-                    "source": "/media/leviosar/________1/Env/projects/QuadroDocente/v3.1/platforms/android/app/src/main/res/values/strings.xml",
+                    "source": "F:\\media\\leviosar\\________1\\Env\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",
@@ -67,10 +45,32 @@
             ]
         },
         {
-            "outputFile": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/E:\\Env\\projects\\Quadro Docente - Git\\QuadroDocente\\v3.0\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "F:\\Dev\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/E:\\Env\\projects\\Quadro Docente - Git\\QuadroDocente\\v3.0\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "F:\\Dev\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "160,55,101",
+                        "endColumns": "63,45,58",
+                        "endOffsets": "219,96,155"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,165",
+                        "endColumns": "63,45,58",
+                        "endOffsets": "114,160,219"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\E:\\Env\\projects\\Quadro Docente - Git\\QuadroDocente\\v3.0\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\E:\\Env\\projects\\Quadro Docente - Git\\QuadroDocente\\v3.0\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",
@@ -89,10 +89,32 @@
             ]
         },
         {
-            "outputFile": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/E:\\Env\\projects\\QuadroDocente\\v3.0\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\E:\\Env\\projects\\Quadro Docente - Git\\QuadroDocente\\QuadroDocenteApp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/E:\\Env\\projects\\QuadroDocente\\v3.0\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\E:\\Env\\projects\\Quadro Docente - Git\\QuadroDocente\\QuadroDocenteApp\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "165,55,106",
+                        "endColumns": "63,50,58",
+                        "endOffsets": "224,101,160"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,170",
+                        "endColumns": "63,50,58",
+                        "endOffsets": "114,165,224"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",
@@ -111,10 +133,10 @@
             ]
         },
         {
-            "outputFile": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\E:\\Env\\projects\\QuadroDocente\\v3.0\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "/media/leviosar/________/Env/projects/QuadroDocente/v3.1/platforms/android/app/src/main/res/values/strings.xml",
+                    "source": "F:\\media\\leviosar\\________\\Env\\projects\\QuadroDocente\\v3.1\\E:\\Env\\projects\\QuadroDocente\\v3.0\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",

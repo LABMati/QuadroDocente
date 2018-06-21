@@ -1,4 +1,4 @@
-#Fri Jun 01 14:01:40 BRT 2018
-base.0=/media/leviosar/________1/Env/projects/QuadroDocente/v3.1/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Wed Jun 20 21:20:12 BRT 2018
+base.0=F\:\\Dev\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 renamed.0=classes.dex
-file.0=/media/leviosar/________1/Env/projects/QuadroDocente/v3.1/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex
+file.0=F\:\\Dev\\projects\\QuadroDocente\\v3.1\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

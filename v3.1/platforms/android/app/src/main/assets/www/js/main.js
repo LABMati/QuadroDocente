@@ -17,10 +17,8 @@ x.style.marginBottom = '5vw'
 
 
 function onDeviceReady(){
-    alert("rodou")
     emailSend = (remetente) => {
         if(cordova.plugins.email.isAvailable){
-            alert("Era pra funcionar")
             cordova.plugins.email.open({
                 to:      remetente,
                 cc:      '',
@@ -102,8 +100,6 @@ campusSelect.addEventListener('input', ev=>{
     }
 })
 
-getCampusInfo();
-
 /* 
 getCampusInfo()
 Receives a String naming the selected campus for search
@@ -123,11 +119,60 @@ function getCampusInfo(campusid) {
             campusSite.href = response[0][2]
             campusEnd.href = response[0][4]
             campusEnd.firstElementChild.innerText = response[0][3]
+            gambiarraCampus();
         }else{
             console.log("Error: "+xhr.status)
         }
     })
     xhr.send()
+}
+
+function gambiarraCampus(){
+    switch(campusSelect.options.selectedIndex){
+        case 1:
+            gambiarraPanel("http://abelardoluz.ifc.edu.br/institucional/")
+            break
+        case 2:
+            gambiarraPanel("http://araquari.ifc.edu.br/quadro-de-servidores/")
+            break
+        case 3:
+            gambiarraPanel("http://blumenau.ifc.edu.br/quadro-de-servidores-2/")
+            break
+        case 6:
+            gambiarraPanel("http://concordia.ifc.edu.br/wp-content/uploads/2018/06/2018_06_12_horario-individual-professores.pdf")
+            break
+        case 7:
+            gambiarraPanel("http://professores.fraiburgo.ifc.edu.br/")
+            break
+        case 8:
+            gambiarraPanel("http://ibirama.ifc.edu.br/institucional-quadro-funcional/")
+            break
+        case 9:
+            gambiarraPanel("http://luzerna.ifc.edu.br/grade-e-corpo-docente/")
+            break
+        case 10:
+            gambiarraPanel("http://www.ifc-riodosul.edu.br/site/quadro-funcional/")
+            break
+        case 11:
+            gambiarraPanel("https://drive.google.com/drive/u/0/folders/0B7JZjvR-cxkIbmhXaWpWdUtsMGc?usp=sharing_eid&ts=57065df0")
+            break
+        case 12:
+            gambiarraPanel("http://saobentodosul.ifc.edu.br/quadro-de-docentes/")
+            break;
+        case 13:
+            gambiarraPanel("https://saofrancisco.ifc.edu.br/corpo-docente/")
+            break;
+        case 14:
+            gambiarraPanel("http://sombrio.ifc.edu.br/quadro-de-atividades/")
+            break
+        case 15:
+            gambiarraPanel("https://ptd.videira.ifc.edu.br/")
+            break
+        default:
+            searchProfessor.readOnly = false
+            removeDivs()
+        break
+    }
 }
 
 document.addEventListener("deviceready", onDeviceReady)
@@ -157,6 +202,19 @@ function buildFailedPanel(){
     div.classList = 'panel panel-default erro'
     div.innerText = 'Nenhum professor encontrado'
     resultDropdown.appendChild(div)
+}
+
+function gambiarraPanel(href){
+    removeDivs()
+    let linksa = document.createElement('A')
+    linksa.href = href
+    linksa.target = "_blank"
+    let div = document.createElement('DIV')
+    div.classList = 'panel panel-default gambiarra'
+    div.innerText = 'Seu Campus ainda não está cadastrado, clique aqui para ser redirecionado ao quadro de horários'
+    linksa.appendChild(div)
+    resultDropdown.appendChild(linksa)
+    searchProfessor.readOnly = true
 }
 
 /*
