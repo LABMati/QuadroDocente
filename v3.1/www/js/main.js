@@ -61,7 +61,9 @@ function showResult(){
         
     })
     xhr.send()
-}
+}do {
+    
+} while (condition);
 
 /*
 	Get all the professors from the selected campus and create an entire list with all the registered
