@@ -46,12 +46,13 @@ function showResult(){
     campus = campusSelect.options[campusSelect.selectedIndex].innerText
 
     if(professor.trim().length==0){
+        removeDivs()
         return
     }
 
     var xhr = new XMLHttpRequest()
     xhr.open('GET', 'http://www.labmatii.ifc-camboriu.edu.br/search.php?c='+campus+'&p='+professor, true) // p = professor, c = campus
-    xhr.addEventListener('load', ev=>{
+    xhr.addEventListener('load', ()=>{
         let responses = JSON.parse(xhr.responseText)
         if (responses == "Sem sugestões") {
             buildFailedPanel()
@@ -74,7 +75,7 @@ function listAllProfessors(campus){
     }else{
         var xhr = new XMLHttpRequest()
         xhr.open('GET', 'http://www.labmatii.ifc-camboriu.edu.br/listAll.php?c='+campus, true) // c = campus
-        xhr.addEventListener('load', ev=>{
+        xhr.addEventListener('load', ()=>{
             let responses = JSON.parse(xhr.responseText)
             if (responses == "Sem sugestões") {
                 buildFailedPanel()
@@ -86,11 +87,11 @@ function listAllProfessors(campus){
         xhr.send()
     }
 }
-listAllBut.addEventListener('click', ev=>{
+listAllBut.addEventListener('click', ()=>{
     listAllProfessors(campusSelect.options.selectedIndex)
 })
 
-campusSelect.addEventListener('input', ev=>{
+campusSelect.addEventListener('input', ()=>{
     if (campusSelect.options.selectedIndex == 0) {
         campusInfo.style.display = 'none'
     }else{
@@ -110,10 +111,10 @@ If status is 200, changes the campus info based on info received from the databa
 function getCampusInfo(campusid) {
     xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://www.labmatii.ifc-camboriu.edu.br/campusInfo.php?campusInfo='+campusid)
-    xhr.addEventListener('load', ev=>{
+    xhr.addEventListener('load', ()=>{
         if(xhr.status == 200){       
             var response = JSON.parse(xhr.response)
-            campusTitle.innerText = "Campus " + response[0][0]
+            campusTitle.innerHTML = "<h5> Campus " + response[0][0] + "</h5> <i class='fas fa-sort-down'></i>"
             campusPhone.innerText = "Telefone: " + response[0][1]
             campusSite.href = response[0][2]
             campusEnd.href = response[0][4]
@@ -185,7 +186,7 @@ var searchTimeout
     If it's already defined, the timer will be cleared and redefined
     At the time when the timer expires without redefing, showResult() is called
 */
-searchProfessor.addEventListener('input', ev=>{
+searchProfessor.addEventListener('input', ()=>{
     if (searchTimeout != undefined) clearTimeout(searchTimeout);
     searchTimeout = setTimeout(showResult, 500);
 })
@@ -247,7 +248,7 @@ function buildBox(obj){
 
         divs[4].classList = 'panel-body'
         divs[4].innerText = obj[i][1]
-        divs[4].addEventListener("click", ev=>{
+        divs[4].addEventListener("click", ()=>{
             emailSend(divs[4].innerText)
         })
 

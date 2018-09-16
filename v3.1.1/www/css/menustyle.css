@@ -60,18 +60,6 @@ img.lablogobig{
     margin-bottom: 10vw;
     width: 50vw;
 }
-
-div.return {
-    position: absolute;
-    left: 5vw;
-    top: 5vw;
-}
-
-.fa-arrow-left {
-    color: black;
-    font-size: 8vw;
-}
-
 .fa-sort-down{
     color: white;
     font-size: 6vw;  
