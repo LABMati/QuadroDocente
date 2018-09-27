@@ -1,6 +1,5 @@
-# QuadroDocente
-A proposta do projeto é desenvolver uma aplicação institucional no âmbito do Instituto Federal Catarinense que promova uma visualização simples, rápida e padronizada dos dados pertencentes aos docentes de todos os 15 *campi* da instituição, que permita a inserção e atualização de dados de maneira dinâmica e unifique todos os dados. Para tal, torna-se uma importante parte do projeto a extração de dados dos quadros docentes atuais, possibilitando a implementação de um padrão para todos os *campi*.
-  
+# Quadro Docente
+A objetivo do projeto é desenvolver uma aplicação institucional no âmbito do Instituto Federal Catarinense que promova uma visualização simples, rápida e padronizada dos dados pertencentes aos docentes de todos os 15 *campi* da instituição, que permita a inserção e atualização de dados de maneira dinâmica e unifique todos os dados. Além das informações sobre os professores e *campi* do Instituto Federal Catarinense, o aplicativo apresenta outras informações úteis ao usuário. Grande parte do projeto se dá ao trabalho de extrair os dados dos quadros docentes atuais da instituição, sendo possível a utilização de scripts na maioria dos casos, havendo somente algumas exceções onde a extração é feita de forma manual.
 ## Desenvolvimento
 Com o intuito de desenvolver um aplicativo portável para os principais sistemas operacionais mobile, a equipe de desenvolvimento optou por utilizar a framework Cordova que possibilita o desenvolvimento de aplicações mobile através das linguagens web HTML5, CSS3 e Javascript.
 
