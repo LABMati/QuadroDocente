@@ -5,7 +5,6 @@ Com o intuito de desenvolver um aplicativo portável para os principais sistemas
 
 Atualmente o projeto está em fase de desenvolvimento e sua versão de testes pode ser acessada pelo link http://www.labmatii.ifc-camboriu.edu.br/quadrodocente/
 ## Dependências
-- [Bootstrap](http://getbootstrap.com/) - Toolkit para desenvolvimento de protótipos responsivos a partir de componentes pré-pronto
 - [Cordova](https://cordova.apache.org/) - Framework que permite o desenvolvimento de aplicações mobile utilizando as linguagens web HTML, CSS e Javascript
 - [Font Awesome](https://fontawesome.com/) - Ícones vetorizados pré-prontos
 ## Autores 
