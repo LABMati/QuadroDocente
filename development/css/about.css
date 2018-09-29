@@ -1,0 +1,66 @@
+*{
+    font-family: Roboto;
+}
+
+div.panel {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-bottom: 5vw;
+    transition: 1s ease;
+}
+
+div#collapse1, div#collapse2, div#collapse3{
+    height: 0vw;
+}
+
+div.panel-heading {
+    padding-left: 5%;
+    padding-right: 5%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+div.panel-group{
+    transition: 1s ease;
+}
+
+.collapse{
+    transition: 1s ease;
+    overflow: hidden
+}
+
+.no-border-last{
+    height: 60vw !important;
+    display: flex;
+    align-items: center;
+}
+
+div.networks > a:last-child{
+    display: flex;
+    align-items: center;
+}
+
+div.panel-body{
+    padding-left: 5%;
+    height: 35vw;
+}
+
+div.panel-body > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div.panel-body > div > div > h4{
+    margin: 0;
+    margin-top: 2vw;
+}
+
+div.panel-body > div > div {
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+a{
+    text-decoration: none;
+}

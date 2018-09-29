@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    
+    <!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+
+    <!-- Styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <link href="css/menustyle.css" rel="stylesheet">
+    
+    <!-- Dependecies -->
+	<script src="js/jquery.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="cordova.js"></script>
+
+	<title>Quadro Docente - IFC</title>
+
+</head>
+
+<body>
+	<div class="all-container"></div>
+	<div class="menu-toggle">
+		<i class="fas fa-ellipsis-v"></i>
+	</div>
+	<div class="return"><a href="index.html"><i class="fas fa-arrow-left"></i></a></div>
+	<div class="menu">
+		<a href="about.html"><div class="menu-item no-border">Sobre</div></a>
+	</div>
+	<div class="container">
+		<div class="logo">
+				<img src="img/ifc2.png"/>
+		</div>
+		<div class="selectCampus">
+			<select name='camp' class="campusSelect form-control" required="required">
+				<p class="help-block text-danger"></p>
+				<option value="0">Todos os Campi</option>
+				<option value="1">Abelardo Luz</option>
+				<option value="2">Araquari</option>
+				<option value="3">Blumenau</option>
+				<option value="4">Brusque</option>
+				<option value="5">Camboriú</option>
+				<option value="6">Concórdia</option>
+				<option value="7">Fraiburgo</option>
+				<option value="8">Ibirama</option>
+				<option value="9">Luzerna</option>
+				<option value="10">Rio do Sul</option>
+				<option value="11">Santa Rosa do Sul</option>
+				<option value="12">São Bento do Sul</option>
+				<option value="13">São Francisco do Sul</option>
+				<option value="14">Sombrio</option>
+				<option value="15">Videira</option>
+
+			</select>
+		</div>
+		<div class="campus-info panel">
+			<a data-toggle="collapse" href="#collapsec">
+				<div class="panel-heading"></div>
+			</a>
+			<div id="collapsec" class="panel-collapse collapse">
+				<div class="panel-body"></div>
+				<a target="_blank" class="site"><div class="panel-footer">Site institucional</div></a>
+				<a target="_blank" class="endereco"><div class="panel-footer"></div></a>
+			</div>
+		</div>
+		<div class="searchProfessor">
+
+  			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1"><i class="fas fa-list-ul"></i></span>
+				<input type="text" class="form-control" placeholder="Encontre seu professor..." aria-label="Nome" aria-describedby="Nome">
+			</div>
+
+			<div class="search-dropdown">
+				
+			</div>
+		</div>
+	</div>
+	<script src="js/main.js"></script>
+	<script src="js/menus.js"></script>
+</body>
+</html>

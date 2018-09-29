@@ -1,0 +1,324 @@
+* {
+    box-sizing: border-box
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f6f6;
+}
+
+.img-80{
+    width: 80%;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flex {
+    display: flex;
+}
+
+.agenda-display {
+    height: 20vw;
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10vw;
+    color: #379746;
+}
+
+.panel-body div {
+    width: 45vw;
+}
+
+select{
+    width: 80vw;
+    height: 6vh;
+    border: none;
+    border-radius: 5px; 
+    font-size: 5vmin;
+    background-color: #cbced3;
+    font-family: Roboto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-bottom: 1vmin solid #379746;
+}	
+    
+
+div.container > form {
+    width: 80vw;
+}
+
+input.form-control {
+    width: 60vw;
+}
+
+form > *{
+    flex-grow: 1;
+    display: flex;
+    margin-top: 4vw;	
+}
+
+form {
+    margin-top: 10vh;
+}
+
+input.botao{
+    background-color: #379746;
+    font-family: Roboto;
+    font-size: 4vw;
+    justify-content: center;
+    text-align: center;
+    border: none;
+}
+
+.mt-10 {
+    margin-top: 7vh;
+}
+
+span {
+    font-family: Roboto;
+    font-size: 3vmax;
+}
+
+span.input-group-addon {
+    background:  #379746;
+    color: white;
+    font-size: 5vw;
+}
+
+div.results {
+    width: 80vw;
+    margin-top: 6vh;
+}
+
+div.results > div.professor {
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid grey;
+    height: 6vh;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    padding: 0;
+}
+
+a.collapselink {
+    color: black !important; 
+    text-decoration: none;
+}
+
+a.collapselink:checked, a.collapselink:focus {
+    
+    color: black !important;
+    text-decoration: none;
+}
+
+div.panel-body {
+    background-color:#f5f5f5;
+    border-bottom: 1px solid #ccc;
+}
+
+div.panel-footer {
+    border-bottom: 1px solid #ccc;
+}
+
+div.searchProfessor{
+    margin-top: 5vw;
+}
+
+div.searchProfessor input {
+    width: 80vw;
+    margin-bottom: 5vw;
+}
+
+select.form-control {
+    width: 80vw;
+}
+
+.input-group {
+    width: 80vw;
+}
+
+input{
+    margin-bottom: 5vw;
+}
+
+input.form-control {
+    height: 10vw;
+    margin-bottom: 5vw;
+}
+
+div.searchProfessor button {
+    background: #379746;
+    color: white;
+    font-family: Roboto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vw;
+}
+
+div.panel-group {
+    max-width: 80vw;
+}
+
+div.campus-info {
+    width: 80vw;
+    margin-top: 5vw;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+div.erro {
+    height: 10vw;
+    display: flex;
+    align-items: center;
+    padding-left: 3vw;
+}
+
+div.menu {
+    background: white;
+    border: 1px solid #ccc;
+    width: 40vw;
+    height: 10vw;
+    border-radius: 5px;
+    position: absolute;
+    right: 3vw;
+    top: 3vw;
+    display: none;
+    z-index: 6;
+}
+
+div.menu-item {
+    height: 10vw;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding-left: 3vw;
+}
+
+div.all-container{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0%;
+    left: -100%;
+}
+
+.todo{
+    width: 100vw;
+    height: 100vh;
+    justify-content: flex-start;
+    padding-top: 20vw;
+}
+
+div.no-border{
+    border: none;
+}
+
+a{
+    color: inherit !important;
+    /* Bootstrap override*/
+}
+
+div.campus-info div.panel-footer {
+    background: white;
+    color: black;
+}
+
+
+.panel {
+    margin-bottom: 0 !important;
+    /* Bootstrap override*/
+}
+
+a:focus {
+    text-decoration: none !important;
+}
+
+
+div.gambiarra{
+    padding: 4vw;
+}
+
+div.input-group-sis{
+    width: 100%;
+    height: 10vw;
+    display: flex;
+    margin-bottom: 5vw;    
+}
+
+div.input-group-sis > a{
+    width: 85%;
+    height: 100%;
+}
+
+div.input-group-sis > a > button{    
+    border: none;
+    background: #379746;
+    color: white;
+    height: 100%;
+    width: 100%;
+    border-radius: 1px;
+}
+
+div.input-group-sis > a > button:focus{
+    outline: none;
+}
+
+div.input-group-sis > label{
+    width: 15%;
+    height: 100%;
+    border: 2px solid #379746;
+    border-right: 0; 
+    color: #379746;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    height: 18vw;
+    justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    background: #f6f6f6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+header > div{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+div.container div.logo{
+    z-index: 5;
+}
+
+div.searchProfessor > div.input-group > span > input {
+    z-index: 0;
+}

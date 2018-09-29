@@ -1,4 +1,0 @@
-#Tue Apr 24 21:02:01 BRT 2018
-base.0=E\:\\Env\\projects\\QuadroDocente\\v3.0\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-renamed.0=classes.dex
-file.0=E\:\\Env\\projects\\QuadroDocente\\v3.0\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

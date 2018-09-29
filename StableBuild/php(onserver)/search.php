@@ -1,53 +1,69 @@
 <?php
 
-$professor = $_GET["p"];
-$campus = $_GET["c"];
+header('Access-Control-Allow-Origin: *');  
 
-if(!isset($_GET["c"]) || !isset($_GET["p"])){
+$professor = $_GET["p"];
+$professor = "%$professor%";
+$campus = (string)$_GET["c"];
+$prof = [];
+$responses = [];
+
+if(!isset($_GET["p"]) || !isset($_GET["c"])){
     echo "alert('Ocorreu um erro durante a execução, contate o laboratório pelo email labmatiii@gmail.com')";
     die;
 }
 
-$dsn = 'mysql:host=mysql.hostinger.com.br;dbname=u535468846_quad;';
-$user = 'u535468846_lab';
-$password = 'labmatii';
+$mysqli = mysqli_connect("localhost", "labmatii", "my28@if#658", "quadrodocente");
 
-try {
-    $dbh = new PDO($dsn, $user, $password,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
+if(mysqli_connect_errno()){
+    printf("Conexão com o banco de dados falhou \n", mysqli_connect_error());
+    exit();
 }
-
-print_r($dbh);
-die;
 
 if($campus != "Todos os Campi") {
-    $sth = $dbh->prepare
-    ("SELECT pr.nome_professor, pr.email_professor, pr.lattes_professor, h.link_horario
-        FROM professor AS pr
-            INNER JOIN horario_professor AS hp
-                ON pr.id_professor = hp.id_professor
-                    INNER JOIN horario AS h
-                        ON hp.id_horario = h.id_horario
-                            INNER JOIN professor_campus AS pc
-                                ON p.id_professor = pc.id_professor
-                                    INNER JOIN campus AS c
-                                        ON pc.id_campus = c.id_campus
-                                            WHERE c.cidade_campus = :camp
-                                                AND pr.nome_professor LIKE"." '%$professor%' ");
+    if($sth = mysqli_prepare($mysqli,  "SELECT professor.nome_professor, professor.email_professor, professor.lattes_professor, horario.link_horario FROM professor INNER JOIN horario_professor ON professor.id_professor = horario_professor.id_professor INNER JOIN horario  ON horario_professor.id_horario = horario.id_horario INNER JOIN professor_campus ON professor.id_professor = professor_campus.id_professor INNER JOIN campus ON professor_campus.id_campus = campus.id_campus WHERE campus.cidade_campus = ? AND professor.nome_professor LIKE ? ")){
+       
+        mysqli_stmt_bind_param($sth, "ss", $campus, $professor);
+        mysqli_stmt_execute($sth);
+        mysqli_stmt_bind_result($sth, $nome, $email, $lattes, $horario);
+       
+        while(mysqli_stmt_fetch($sth)){
+            array_push($prof, $nome);
+            array_push($prof, $email);
+            array_push($prof, $lattes);
+            array_push($prof, $horario);
+            array_push($responses, $prof);
+            $prof = [];
+        }
 
-    $sth->execute(["camp" => $campus]);
+        print_r(json_encode($responses));
+        die;
+    }else{
+        print_f("alert('Ocorreu um erro durante a execução, contate o laboratório pelo email labmatiii@gmail.com')");
+        die;
+    }
+
 }else{
-    $sth = $dbh->prepare
-    ("SELECT nome_professor, email_professor, lattes_professor from professor");
-    // $sth->bindParam(1 , $professor);
-    $sth->execute();
-}
+    if($sth = mysqli_prepare($mysqli,  "SELECT professor.nome_professor, professor.email_professor, professor.lattes_professor, horario.link_horario FROM professor INNER JOIN horario_professor ON professor.id_professor = horario_professor.id_professor INNER JOIN horario ON horario_professor.id_horario = horario.id_horario WHERE professor.nome_professor LIKE ? ")){
+       
+        mysqli_stmt_bind_param($sth, "s", $professor);
+        mysqli_stmt_execute($sth);
+        mysqli_stmt_bind_result($sth, $nome, $email, $lattes, $horario);
+       
+        while(mysqli_stmt_fetch($sth)){
+            array_push($prof, $nome);
+            array_push($prof, $email);
+            array_push($prof, $lattes);
+            array_push($prof, $horario);
+            array_push($responses, $prof);
+            $prof = [];
+        }
+        
+        print_r(json_encode($responses));
+        die;
+    }else{
+        print_f("alert('Ocorreu um erro durante a execução, contate o laboratório pelo email labmatiii@gmail.com')");
+        die;
+    }
 
-$responses = $sth->fetch(PDO::FETCH_ASSOC);
-	
-if(empty($responses)){
-    $responses = ["Sem sugestões"];
 }
-
-print_r(json_encode($responses));

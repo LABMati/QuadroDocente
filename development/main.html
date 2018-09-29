@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    
+    <!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/fontawesome-all.min.css">
+
+    <!-- Styles -->
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <link href="css/menustyle.css" rel="stylesheet">
+
+	<script src="cordova.js"></script>
+
+	<title>Quadro Docente - IFC</title>
+
+</head>
+
+<body>
+	<div class="all-container"></div>
+
+	<header>
+		<div class="return">
+			<a href="index.html">
+				<i class="fas fa-arrow-left">
+				</i>
+			</a>
+		</div>			
+		<div class="menu-toggle">
+			<i class="fas fa-ellipsis-v"></i>
+		</div>
+	</header>
+
+	<div class="menu">
+		<a href="about.html"><div class="menu-item no-border">Sobre</div></a>
+	</div>
+
+	<main>
+		<section>
+			<div class="logo">
+				<img src="img/ifc2.png"/>
+			</div>
+
+			<div class="input-group mb-5">
+				<label for="sis"><i class="fas fa-graduation-cap"></i></label>
+				<a href="https://sig.ifc.edu.br/sigaa" target="_blank"><button id="sis">Sistema acadêmico</button></a>
+			</div>
+
+			<select name='camp' class="campusSelect mb-5" required="required">
+				<p class="help-block text-danger"></p>
+				<option value="0">Todos os Campi</option>
+				<option value="1">Abelardo Luz</option>
+				<option value="2">Araquari</option>
+				<option value="3">Blumenau</option>
+				<option value="4">Brusque</option>
+				<option value="5">Camboriú</option>
+				<option value="6">Concórdia</option>
+				<option value="7">Fraiburgo</option>
+				<option value="8">Ibirama</option>
+				<option value="9">Luzerna</option>
+				<option value="10">Rio do Sul</option>
+				<option value="11">Santa Rosa do Sul</option>
+				<option value="12">São Bento do Sul</option>
+				<option value="13">São Francisco do Sul</option>
+				<option value="14">Sombrio</option>
+				<option value="15">Videira</option>
+			</select>
+		
+			<div class="input-group mb-5">
+				<label for="search" ><i class="fas fa-list-ul"></i></label>
+				<input type="text" id="search" class="form-control" placeholder="Encontre seu professor..." aria-label="Nome" aria-describedby="Nome">
+			</div>
+
+		</section>
+
+		<section>
+			
+		</section>
+	</main>
+	
+	<!-- <script src="js/main.js"></script> -->
+	<script src="js/Request.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/menus.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+div.panel {
+    background: #379746;
+    width: 80vw;
+    color: white;
+}
+
+div.panel-body{
+    background: white;
+    color: black;
+    border-bottom: 1px solid #ccc;
+}
+
+
+a {
+    color: white;
+}
+
+a:focus{
+    color: white;
+}
+
+a.black {
+    color: black;
+}
+
+a.black:focus{
+    color: black;
+}
+
+
+div.no-border{
+    border: none;
+}
+
+div.networks{
+    width: 80vw;
+    height: 30vw;
+    display: flex;
+    flex-direction: row;
+    font-size: 20vw;
+    color: #379746;
+    justify-content: space-evenly
+}
+
+a.greenIcon {
+    color: #379746;
+}
+
+img.lablogo {
+    width: 17.5vw;
+    border-radius: 10px;
+}
+
+div.lablogo{
+    margin-top: -2.5vw;
+}
+
+img.lablogobig{
+    margin-top: 10vw;
+    margin-bottom: 10vw;
+    width: 50vw;
+}
+
+div.return {
+    position: absolute;
+    left: 5vw;
+    top: 5vw;
+}
+
+.fa-arrow-left {
+    color: black;
+    font-size: 8vw;
+}
+
+.fa-sort-down{
+    color: white;
+    font-size: 6vw;  
+    margin-top: -2vw;
+    transition: 0.5s;
+}
+
+.rotate{
+    transform: rotate(180deg);
+    margin-top: 2vw;
+}
+
+i.fa-sort-down{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
