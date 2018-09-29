@@ -2,7 +2,7 @@
 
 class IFCAPI{
     function __construct(){
-        $this->connection = new PDO("mysql:host=localhost;dbname=quadrodocente", "root", "my28@if#658", [
+        $this->connection = new PDO("mysql:host=localhost;dbname=quadrodocente", "root", "nãoéasenha", [
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
             ]
         );
