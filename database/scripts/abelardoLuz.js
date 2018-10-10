@@ -84,3 +84,38 @@ function mesclarObjetos(horario,ptd,ria){
 	})
 	copy(professores)
 }
+
+//depois de rodar os códigos acima, executar isso no quadro de email e Lattes
+//E-mail e Lattes---------------------------------------------------
+document.querySelectorAll('tbody').forEach(table => {
+	table.querySelectorAll('tr').forEach(row => {
+		let nome = row.querySelector('td').innerText
+		nome = nome.substring(nome.lastIndexOf('.') + 1, nome.length).replace(/\r?\n|\r/g, ' ').trim()
+		if (nome != 'Nome') {
+			__setName(removeAcento(nome), row)
+		}
+	})
+})
+
+function __setName(nome, row) {
+	data.forEach(professor => {
+		if (removeAcento(professor.nome) == nome) {
+			professor.email = row.querySelector('td:nth-child(2)').innerText.trim()
+			if (row.querySelector('td:nth-child(4) a'))
+				professor.lattes = row.querySelector('td:nth-child(4) a').href
+			else
+				professor.lattes = ''
+			return
+		}
+	})
+}
+function __removeAcento(text) {//isso é copiado
+	text = text.toLowerCase();
+	text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a')
+	text = text.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e')
+	text = text.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i')
+	text = text.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o')
+	text = text.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u')
+	return text;
+}
+//me descupla por isso
